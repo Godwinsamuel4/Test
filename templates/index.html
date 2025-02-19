@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>😂 Welcome to the Funniest Website Ever! 😂</h1>
+        <p>If you don't laugh, we'll give you a free internet hug 🤗</p>
+    </header>
+
+    <main>
+        <section id="joke-section">
+            <h2>🤣 Random Joke Generator 🤣</h2>
+            <p id="joke-text">Click the button for a joke!</p>
+            <button onclick="getJoke()">Tell me a joke</button>
+        </section>
+
+        <section id="fun-form">
+            <h2>📝 The Most Useless Form Ever</h2>
+            <form>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter a funny name">
+                
+                <label for="superpower">Your Superpower:</label>
+                <select id="superpower" name="superpower">
+                    <option value="flying">Flying (only 2 inches off the ground)</option>
+                    <option value="invisibility">Invisibility (but only when no one is looking)</option>
+                    <option value="mind-reading">Mind Reading (only for cats)</option>
+                    <option value="infinite-coffee">Infinite Coffee Generation</option>
+                </select>
+
+                <button type="submit">Submit (but nothing will happen)</button>
+            </form>
+        </section>
+
+        <section id="funny-facts">
+            <h2>🤯 Useless Funny Facts</h2>
+            <ul>
+                <li>💡 The word "queue" is just "Q" followed by four silent letters.</li>
+                <li>🍕 If you say "gullible" slowly, it sounds like "oranges". (Try it... just kidding!)</li>
+                <li>🐢 Turtles can breathe through their butts.</li>
+                <li>😴 If you sleep 8 hours a day, you're asleep for 1/3 of your life. Congrats on wasting 1/3 of existence!</li>
+                <li>🦄 Unicorns are actually mentioned in the Bible. They just got bad PR.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Funny Website Inc. | Made with 😂 and 🤪</p>
+    </footer>
+
+    <script>
+        function getJoke() {
+            fetch('/get_joke')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('joke-text').innerText = data.joke;
+                })
+                .catch(error => {
+                    document.getElementById('joke-text').innerText = "Oops! No jokes today!";
+                });
+        }
+    </script>
+
+</body>
+</html>
+
